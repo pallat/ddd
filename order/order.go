@@ -26,7 +26,6 @@ func NewOrder() *Order {
 }
 
 func (o *Order) Checkout(cart *cart.Cart) *PurchaseOrder {
-	var total float64
 	po := &PurchaseOrder{}
 
 	for item, quantity := range cart.Items {
@@ -35,10 +34,9 @@ func (o *Order) Checkout(cart *cart.Cart) *PurchaseOrder {
 			Quantity: quantity,
 			Price:    pricing.Price(&item, currency.THB),
 		})
-		total += pricing.Price(&item, currency.THB) * float64(quantity)
 	}
 
-	po.Total = total
+	po.Total = cart.Checkout()
 
 	return po
 }
