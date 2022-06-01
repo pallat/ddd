@@ -1,6 +1,8 @@
 package cart
 
 import (
+	"fmt"
+
 	"github.com/pallat/ddd/product"
 )
 
@@ -29,5 +31,6 @@ func (c *Cart) RemoveItem(item *product.Item, quantity int64) {
 }
 
 func (c *Cart) RemoveProduct(item *product.Item) {
+	defer fmt.Printf("%s has removed\n", item.Name)
 	delete(c.Items, *item)
 }
