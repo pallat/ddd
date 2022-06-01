@@ -69,4 +69,42 @@ func TestCartRemoveItem(t *testing.T) {
 			t.Errorf("Expected cart to have 3 items, but got %d\n%#v\n", sumqty, cart.Items)
 		}
 	})
+
+	t.Run("remove 1 Rice Cooker from Cart", func(t *testing.T) {
+		cart := NewCart()
+		cart.AddItem(product.NewItem(product.IPadPro), 1)
+		cart.AddItem(product.NewItem(product.AppleWatch), 1)
+		cart.AddItem(product.NewItem(product.RiceCooker), 2)
+
+		cart.RemoveItem(product.NewItem(product.RiceCooker), 1)
+
+		var sumqty int64
+		for _, qty := range cart.Items {
+			sumqty += qty
+		}
+
+		if sumqty != 3 {
+			t.Errorf("Expected cart to have 3 items, but got %d\n%#v\n", sumqty, cart.Items)
+		}
+	})
+}
+
+func TestCartRemoveProduct(t *testing.T) {
+	t.Run("remove iPad Pro from Cart", func(t *testing.T) {
+		cart := NewCart()
+		cart.AddItem(product.NewItem(product.IPadPro), 1)
+		cart.AddItem(product.NewItem(product.AppleWatch), 1)
+		cart.AddItem(product.NewItem(product.RiceCooker), 2)
+
+		cart.RemoveProduct(product.NewItem(product.IPadPro))
+
+		var sumqty int64
+		for _, qty := range cart.Items {
+			sumqty += qty
+		}
+
+		if sumqty != 3 {
+			t.Errorf("Expected cart to have 3 items, but got %d\n%#v\n", sumqty, cart.Items)
+		}
+	})
 }

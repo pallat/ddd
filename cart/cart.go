@@ -27,3 +27,7 @@ func (c *Cart) RemoveItem(item *product.Item, quantity int64) {
 		delete(c.Items, *item)
 	}
 }
+
+func (c *Cart) RemoveProduct(item *product.Item) {
+	delete(c.Items, *item)
+}
