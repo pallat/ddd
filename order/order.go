@@ -44,13 +44,8 @@ func (o *Order) Checkout(cart *cart.Cart) *PurchaseOrder {
 		sumWeight += item.Weight * quantity
 	}
 
-<<<<<<< HEAD
 	po.SubTotal = cart.Checkout()
-	po.ShippingFee = shipping.Price(sumWeight, currency.THB)
-=======
-	po.SubTotal = subtotal
 	po.ShippingFee = shipping.Fee(sumWeight, currency.THB)
->>>>>>> 099d420 (Rename function)
 	po.Total = po.SubTotal + po.ShippingFee
 
 	return po
