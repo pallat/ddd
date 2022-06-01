@@ -7,7 +7,8 @@ import (
 
 var db = map[currency.Unit]map[product.ProductName]float64{
 	currency.THB: {
-		product.IPadPro: 37900.00,
+		product.IPadPro:    37900.00,
+		product.AppleWatch: 14900.00,
 	},
 }
 
