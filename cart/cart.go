@@ -9,7 +9,8 @@ import (
 )
 
 type Cart struct {
-	Items map[product.Item]int64
+	Items        map[product.Item]int64
+	IsCheckedOut bool
 }
 
 func NewCart() *Cart {
@@ -43,5 +44,7 @@ func (c *Cart) Checkout() float64 {
 	for item, quantity := range c.Items {
 		total += pricing.Price(&item, currency.THB) * float64(quantity)
 	}
+
+	c.IsCheckedOut = true
 	return total
 }

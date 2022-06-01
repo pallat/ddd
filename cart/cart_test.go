@@ -128,4 +128,14 @@ func TestCartCheckout(t *testing.T) {
 			t.Errorf("Expected total to be 37900, but got %f", total)
 		}
 	})
+	t.Run("checkout set true to IsCheckedOut when checkout has called", func(t *testing.T) {
+		cart := NewCart()
+		cart.AddItem(product.NewItem(product.IPadPro), 1)
+
+		_ = cart.Checkout()
+
+		if cart.IsCheckedOut != true {
+			t.Errorf("Expected IsCheckedOut to be true, but got %t", cart.IsCheckedOut)
+		}
+	})
 }
