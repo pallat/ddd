@@ -5,13 +5,13 @@ import (
 )
 
 type Cart struct {
-	Items []*product.Item
+	Items map[*product.Item]int64
 }
 
 func NewCart() *Cart {
-	return &Cart{}
+	return &Cart{Items: map[*product.Item]int64{}}
 }
 
-func (c *Cart) AddItem(item *product.Item) {
-	c.Items = append(c.Items, item)
+func (c *Cart) AddItem(item *product.Item, quantity int64) {
+	c.Items[item] = quantity
 }
