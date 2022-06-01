@@ -3,6 +3,8 @@ package cart
 import (
 	"fmt"
 
+	"github.com/pallat/ddd/currency"
+	"github.com/pallat/ddd/pricing"
 	"github.com/pallat/ddd/product"
 )
 
@@ -33,4 +35,13 @@ func (c *Cart) RemoveItem(item *product.Item, quantity int64) {
 func (c *Cart) RemoveProduct(item *product.Item) {
 	defer fmt.Printf("%s has removed\n", item.Name)
 	delete(c.Items, *item)
+}
+
+func (c *Cart) Checkout() float64 {
+	var total float64
+
+	for item, quantity := range c.Items {
+		total += pricing.Price(&item, currency.THB) * float64(quantity)
+	}
+	return total
 }

@@ -108,3 +108,24 @@ func TestCartRemoveProduct(t *testing.T) {
 		}
 	})
 }
+
+func TestCartCheckout(t *testing.T) {
+	t.Run("checkout with empty cart", func(t *testing.T) {
+		cart := NewCart()
+		total := cart.Checkout()
+
+		if total != 0 {
+			t.Errorf("Expected total to be 0, but got %f", total)
+		}
+	})
+	t.Run("checkout with 1 iPad Pro", func(t *testing.T) {
+		cart := NewCart()
+		cart.AddItem(product.NewItem(product.IPadPro), 1)
+
+		total := cart.Checkout()
+
+		if total != 37900 {
+			t.Errorf("Expected total to be 37900, but got %f", total)
+		}
+	})
+}
