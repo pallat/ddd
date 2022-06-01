@@ -5,6 +5,7 @@ Add 2 Rice Cooker into the Cart
 Remove Ipad Pro out of the Cart
 Can See price before add to Cart
 Create Order (Checkout from cart) and make sure that cart has checked out
+Summary total price and shipping cost with weight 100g * 0.1 per item. 
 
 *Key Take away*
 Entity = Business Domain Object
