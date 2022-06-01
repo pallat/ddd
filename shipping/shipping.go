@@ -6,6 +6,6 @@ var db = map[currency.Unit]float64{
 	currency.THB: 0.1,
 }
 
-func Price(weight int64, currency currency.Unit) float64 {
+func Fee(weight int64, currency currency.Unit) float64 {
 	return float64(weight) * db[currency]
 }

@@ -12,7 +12,7 @@ func TestCalculateShippingPrice(t *testing.T) {
 		input := 100
 		expected := 10.0
 
-		shippingPrice := Price(int64(input), currency.THB)
+		shippingPrice := Fee(int64(input), currency.THB)
 
 		if shippingPrice != expected {
 			t.Errorf("Expected shipping price to be %f, but got %f\n", 10.0, shippingPrice)
