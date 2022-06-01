@@ -2,25 +2,19 @@ package product
 
 type ProductType int
 
+type ProductName string
+
 const (
-	IPadPro ProductType = iota
-	AppleWatch
-	RiceCooker
+	IPadPro    ProductName = "iPad Pro"
+	AppleWatch             = "Apple Watch"
+	RiceCooker             = "Rice Cooker"
 )
 
 type Item struct {
 	Name string
 }
 
-func NewItem(productType ProductType) *Item {
-	switch productType {
-	case IPadPro:
-		return &Item{Name: "iPad Pro"}
-	case AppleWatch:
-		return &Item{Name: "Apple Watch"}
-	case RiceCooker:
-		return &Item{Name: "Rice Cooker"}
-	default:
-		return nil
-	}
+func NewItem(productName ProductName) *Item {
+	return &Item{Name: string(productName)}
+
 }
